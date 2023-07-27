@@ -4,7 +4,7 @@
 - 🌱 Estudando python e alguns frameworks de ciência de dados
 - ⚡ Hobbies: Tocar Violão, Arduino e Jiu-Jitsu 
 
-*##
+##
   
 ![Daniel's GitHub stats](https://github-readme-stats.vercel.app/api?username=danielduartt&show_icons=true&theme=dracula)
 
