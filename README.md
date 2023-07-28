@@ -2,7 +2,7 @@
 ##
 - 👨‍💻 Estudante de Engenharia da Computação
 - 🌱 Estudando python e alguns frameworks de ciência de dados
-- ⚡ Hobbies: Tocar Violão, Arduino e Jiu-Jitsu 
+- ⚡ Curiosidades: Amo café e tocar violão 🎵
 
 ##
   
