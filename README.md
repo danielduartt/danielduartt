@@ -6,7 +6,6 @@
 
 ##
   
-![Daniel's GitHub stats](https://github-readme-stats.vercel.app/api?username=danielduartt&show_icons=true&theme=dracula)
 
 <div style="display: inline_block"><br>
   <img align="center" alt="Dani-Python" height="35" width="95" src="https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white">
