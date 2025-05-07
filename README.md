@@ -3,6 +3,10 @@
   <img src="https://capsule-render.vercel.app/api?type=wave&color=0:1abc9c,100:2c3e50&height=200&section=header&text=Olá%20👋%2C%20eu%20sou%20Daniel&fontSize=35&fontAlignY=40" alt="banner" />
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/seu-usuario/seu-repo/main/caminho/para/sua-imagem-pixel.png" alt="Daniel Duarte Pixel Art" width="200" />
+</p>
+
 <h3 align="center">👨‍💻 Estudante de Engenharia da Computação | Fullstack & Ciência de Dados 💡</h3>
 
 ---
@@ -63,8 +67,10 @@ Meu principal interesse está em aprender e aplicar ferramentas de desenvolvimen
 </div>
 
 ---
+
 ### 📬 Contato
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](https://dev.daniel.duarte@gmail.com)
+
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:dev.daniel.duarte@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/danielduartt)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/_duarte_.20)
 
@@ -73,7 +79,3 @@ Meu principal interesse está em aprender e aplicar ferramentas de desenvolvimen
 ⭐ Obrigado por visitar meu perfil!
 
 ---
-
-
-
-
