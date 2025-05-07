@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="img/daniel-pixel.png" alt="Daniel Duarte Pixel Art" width="200" style="border-radius: 50%;" />
+  <img src="img/daniel-pixel.png" alt="Daniel Duarte Pixel Art" width="200" />
 </p>
 
 <h3 align="center">👨‍💻 Estudante de Engenharia da Computação | Fullstack & Ciência de Dados 💡</h3>
