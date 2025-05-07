@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/seu-usuario/seu-repo/main/caminho/para/sua-imagem-pixel.png" alt="Daniel Duarte Pixel Art" width="200" />
+  <img src="img/ChatGPT Image 7 de mai. de 2025, 15_00_07 (1).png" alt="Daniel Duarte Pixel Art" width="200" />
 </p>
 
 <h3 align="center">👨‍💻 Estudante de Engenharia da Computação | Fullstack & Ciência de Dados 💡</h3>
