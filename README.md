@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <img src="img/ChatGPT Image 7 de mai. de 2025, 15_00_07 (1).png" alt="Daniel Duarte Pixel Art" width="200" style="border-radius: 50%;" />
+  <img src="img/daniel-pixel.png" alt="Daniel Duarte Pixel Art" width="200" style="border-radius: 50%;" />
 </p>
 
 <h3 align="center">👨‍💻 Estudante de Engenharia da Computação | Fullstack & Ciência de Dados 💡</h3>
