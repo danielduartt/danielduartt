@@ -1,0 +1,385 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+\geometry{margin=2.5cm}
+
+% Configuração para código Clojure
+\lstdefinelanguage{Clojure}{
+  keywords={def, defn, let, fn, map, filter, reduce, assoc, get, first, last, nth, str},
+  keywordstyle=\color{blue}\bfseries,
+  sensitive=true,
+  comment=[l]{;},
+  commentstyle=\color{gray}\itshape,
+  string=[b]",
+  stringstyle=\color{red},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  frame=single,
+  backgroundcolor=\color{gray!10}
+}
+
+\begin{document}
+
+% Capa
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\huge\bfseries Fundamentos em Clojure\par}
+    \vspace{0.5cm}
+    {\Large Exercícios Fundamentais de Clojure: Do Básico à Prática\par}
+    
+    \vspace{3cm}
+    
+    {\Large\bfseries Aluno:\par}
+    {\large Daniel Nunes Duarte\par}
+    
+    \vspace{2cm}
+    
+    {\Large\bfseries Professor:\par}
+    {\large Sergio Souza Costa\par}
+    
+    \vfill
+    
+    {\large Data: 17 de Novembro de 2025\par}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Introdução}
+
+Este documento contém as respostas aos exercícios fundamentais de Clojure, abrangendo desde operações básicas no REPL até conceitos avançados como funções de ordem superior e desestruturação.
+
+\newpage
+
+\section{Exercícios Básicos: Primeiros Passos no REPL}
+
+\subsection{Exercício 1: Operações Aritméticas no REPL}
+
+\textbf{Enunciado:} Calcule o resultado da expressão matemática $(100 \times (5 + 3)) / 8$ diretamente no REPL.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+; Em Clojure, usamos notacao de prefixo
+(/ (* 100 (+ 5 3)) 8)
+; Resultado: 100
+\end{lstlisting}
+
+\textbf{Explicação:} A notação de prefixo do Clojure coloca o operador antes dos operandos. A expressão é avaliada de dentro para fora: primeiro $(5 + 3) = 8$, depois $100 \times 8 = 800$, e finalmente $800 / 8 = 100$.
+
+\subsection{Exercício 2: Manipulação de Strings}
+
+\textbf{Enunciado:} Utilize a função \texttt{str} para concatenar as strings "Clojure é uma linguagem ", "funcional ", e "poderosa." em uma única frase.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(str "Clojure e uma linguagem " "funcional " "poderosa.")
+; Resultado: "Clojure e uma linguagem funcional poderosa."
+\end{lstlisting}
+
+\textbf{Explicação:} A função \texttt{str} concatena todos os seus argumentos em uma única string.
+
+\subsection{Exercício 3: Criando e Acessando Vetores}
+
+\textbf{Enunciado:} Use as funções \texttt{first} e \texttt{last} para extrair o primeiro e o último item do vetor ["Aprender Clojure" "Construir um projeto" "Dominar programação funcional"]. Tente também acessar o primeiro item usando \texttt{nth}.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(def meu-vetor ["Aprender Clojure" 
+                "Construir um projeto" 
+                "Dominar programacao funcional"])
+
+; Primeiro elemento
+(first meu-vetor)
+; Resultado: "Aprender Clojure"
+
+; Ultimo elemento
+(last meu-vetor)
+; Resultado: "Dominar programacao funcional"
+
+; Primeiro elemento usando nth (indice 0)
+(nth meu-vetor 0)
+; Resultado: "Aprender Clojure"
+\end{lstlisting}
+
+\subsection{Exercício 4: Criando e Acessando Mapas}
+
+\textbf{Enunciado:} 
+\begin{enumerate}
+    \item Defina um mapa que represente um livro com as chaves \texttt{:titulo}, \texttt{:autor}, e \texttt{:ano}.
+    \item Extraia o valor da chave \texttt{:autor} utilizando duas técnicas diferentes.
+\end{enumerate}
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+; 1. Definindo o mapa
+(def livro {:titulo "Programming Clojure"
+            :autor "Stuart Halloway"
+            :ano 2009})
+
+; 2. Acessando o autor - Tecnica 1: usando get
+(get livro :autor)
+; Resultado: "Stuart Halloway"
+
+; 2. Acessando o autor - Tecnica 2: usando keyword como funcao
+(:autor livro)
+; Resultado: "Stuart Halloway"
+\end{lstlisting}
+
+\subsection{Exercício 5: Modificando um Mapa (Imutavelmente)}
+
+\textbf{Enunciado:} Usando o mapa do exercício anterior, crie um novo mapa que inclua a chave \texttt{:genero} com o valor "Programação". Utilize \texttt{assoc}. Verifique que o mapa original não foi alterado.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(def livro {:titulo "Programming Clojure"
+            :autor "Stuart Halloway"
+            :ano 2009})
+
+; Criando novo mapa com a chave :genero
+(def livro-atualizado (assoc livro :genero "Programacao"))
+
+; Verificando o novo mapa
+livro-atualizado
+; Resultado: {:titulo "Programming Clojure", :autor "Stuart Halloway", 
+;             :ano 2009, :genero "Programacao"}
+
+; Verificando que o original nao mudou
+livro
+; Resultado: {:titulo "Programming Clojure", :autor "Stuart Halloway", 
+;             :ano 2009}
+\end{lstlisting}
+
+\textbf{Explicação:} A imutabilidade é um conceito fundamental em Clojure. \texttt{assoc} retorna um novo mapa, preservando o original intacto.
+
+\newpage
+
+\section{Criando Nomes: Bindings Globais e Locais}
+
+\subsection{Exercício 6: Definindo uma Constante com def}
+
+\textbf{Enunciado:} Defina uma Var global chamada \texttt{taxa-de-juros} com o valor 0.05. Calcule os juros sobre um principal de 1000.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(def taxa-de-juros 0.05)
+
+; Calculando juros sobre principal de 1000
+(* 1000 taxa-de-juros)
+; Resultado: 50.0
+\end{lstlisting}
+
+\subsection{Exercício 7: Usando let para Bindings Locais}
+
+\textbf{Enunciado:} Calcule o preço total de um produto, aplicando um desconto e depois um imposto, usando \texttt{let}.
+
+Dados:
+\begin{itemize}
+    \item preco-base: 150.0
+    \item percentual-desconto: 0.10 (10\%)
+    \item percentual-imposto: 0.07 (7\%)
+\end{itemize}
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(let [preco-base 150.0
+      percentual-desconto 0.10
+      percentual-imposto 0.07
+      valor-desconto (* preco-base percentual-desconto)
+      preco-com-desconto (- preco-base valor-desconto)
+      preco-final (* preco-com-desconto (+ 1 percentual-imposto))]
+  preco-final)
+; Resultado: 144.45
+\end{lstlisting}
+
+\textbf{Explicação:} O \texttt{let} cria bindings locais que existem apenas dentro de seu escopo. O cálculo é: $150 - (150 \times 0.10) = 135$, depois $135 \times 1.07 = 144.45$.
+
+\newpage
+
+\section{A Essência do Funcional: Criando e Usando Funções}
+
+\subsection{Exercício 8: Criando uma Função Nomeada com defn}
+
+\textbf{Enunciado:} Crie uma função chamada \texttt{calcular-area-circulo} que recebe um raio e retorna a área do círculo ($\pi \times r^2$). Teste com raio 10.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(defn calcular-area-circulo [raio]
+  (* Math/PI (* raio raio)))
+
+; Testando com raio 10
+(calcular-area-circulo 10)
+; Resultado: 314.1592653589793
+\end{lstlisting}
+
+\subsection{Exercício 9: Usando map e Funções Anônimas}
+
+\textbf{Enunciado:} Dado o vetor [1 2 3 4 5], use \texttt{map} para criar uma sequência onde cada número é o dobro. Demonstre com sintaxe completa e abreviada.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+; Sintaxe completa com fn
+(map (fn [x] (* 2 x)) [1 2 3 4 5])
+; Resultado: (2 4 6 8 10)
+
+; Sintaxe abreviada
+(map #(* 2 %) [1 2 3 4 5])
+; Resultado: (2 4 6 8 10)
+\end{lstlisting}
+
+\textbf{Explicação:} Na sintaxe abreviada, \texttt{\#(...)} define uma função anônima e \texttt{\%} representa o argumento.
+
+\subsection{Exercício 10: Filtrando Dados com filter}
+
+\textbf{Enunciado:} Dado o vetor de pessoas, use \texttt{filter} para encontrar apenas aquelas com 18 anos ou mais.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(def pessoas [{:nome "Ana" :idade 25}
+              {:nome "Bruno" :idade 17}
+              {:nome "Carla" :idade 32}
+              {:nome "Daniel" :idade 16}])
+
+(filter #(>= (:idade %) 18) pessoas)
+; Resultado: ({:nome "Ana", :idade 25} {:nome "Carla", :idade 32})
+\end{lstlisting}
+
+\subsection{Exercício 11: Agregando Dados com reduce}
+
+\textbf{Enunciado:} Dado o vetor [10 20 30 40], use \texttt{reduce} para calcular a soma total.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(reduce + [10 20 30 40])
+; Resultado: 100
+\end{lstlisting}
+
+\textbf{Explicação:} \texttt{reduce} aplica a função \texttt{+} acumulativamente: $(((10 + 20) + 30) + 40) = 100$.
+
+\newpage
+
+\section{Estrutura e Clareza: Desestruturação}
+
+\subsection{Exercício 12: Desestruturação de Vetor com let}
+
+\textbf{Enunciado:} Dado o vetor ["João" "Silva" 30], use \texttt{let} com desestruturação para extrair nome, sobrenome e idade, construindo a frase "O usuário João Silva tem 30 anos.".
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(let [[nome sobrenome idade] ["Joao" "Silva" 30]]
+  (str "O usuario " nome " " sobrenome " tem " idade " anos."))
+; Resultado: "O usuario Joao Silva tem 30 anos."
+\end{lstlisting}
+
+\subsection{Exercício 13: Desestruturação de Mapa em Argumentos de Função}
+
+\textbf{Enunciado:} Crie uma função \texttt{descrever-produto} que recebe um mapa e usa desestruturação para extrair \texttt{:nome} e \texttt{:preco}, retornando uma string formatada.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(defn descrever-produto [{:keys [nome preco]}]
+  (str "O produto " nome " custa R$ " preco "."))
+
+; Testando
+(descrever-produto {:nome "Notebook" :preco 3500.0 :estoque 50})
+; Resultado: "O produto Notebook custa R$ 3500.0."
+\end{lstlisting}
+
+\newpage
+
+\section{Exercícios de Síntese: Combinando Conceitos}
+
+\subsection{Exercício 14: Processando uma Lista de Compras}
+
+\textbf{Enunciado:} Calcule o custo total da lista de compras usando \texttt{map} para calcular subtotais e \texttt{reduce} para somar.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(def lista-de-compras
+  [{:produto "Maca" :preco 2.5 :quantidade 4}
+   {:produto "Pao" :preco 5.0 :quantidade 1}
+   {:produto "Leite" :preco 4.2 :quantidade 2}])
+
+(defn calcular-total [lista]
+  (let [subtotais (map #(* (:preco %) (:quantidade %)) lista)]
+    (reduce + subtotais)))
+
+(calcular-total lista-de-compras)
+; Resultado: 23.4
+\end{lstlisting}
+
+\textbf{Explicação:} 
+\begin{itemize}
+    \item Maçã: $2.5 \times 4 = 10.0$
+    \item Pão: $5.0 \times 1 = 5.0$
+    \item Leite: $4.2 \times 2 = 8.4$
+    \item Total: $10.0 + 5.0 + 8.4 = 23.4$
+\end{itemize}
+
+\subsection{Exercício 15: Função Variádica para Estatísticas Simples}
+
+\textbf{Enunciado:} Crie uma função variádica \texttt{estatisticas} que aceita qualquer número de argumentos numéricos e retorna um mapa com \texttt{:contagem}, \texttt{:soma} e \texttt{:media}.
+
+\textbf{Solução:}
+
+\begin{lstlisting}[language=Clojure]
+(defn estatisticas [& numeros]
+  (let [contagem (count numeros)
+        soma (reduce + 0 numeros)
+        media (if (zero? contagem) 0 (/ soma contagem))]
+    {:contagem contagem
+     :soma soma
+     :media media}))
+
+; Testando com varios argumentos
+(estatisticas 10 20 30 40 50)
+; Resultado: {:contagem 5, :soma 150, :media 30}
+
+; Testando sem argumentos
+(estatisticas)
+; Resultado: {:contagem 0, :soma 0, :media 0}
+\end{lstlisting}
+
+\textbf{Explicação:} O \texttt{\&} na lista de parâmetros captura todos os argumentos em uma sequência. A função trata o caso especial de zero argumentos para evitar divisão por zero.
+
+\newpage
+
+\section{Conclusão}
+
+Este conjunto de exercícios demonstra os fundamentos essenciais da programação em Clojure:
+
+\begin{itemize}
+    \item \textbf{Notação de prefixo:} Todas as operações usam a sintaxe uniforme de parênteses.
+    \item \textbf{Imutabilidade:} Estruturas de dados nunca são modificadas, sempre criamos novas versões.
+    \item \textbf{Funções de primeira classe:} Funções podem ser passadas como argumentos e retornadas.
+    \item \textbf{Desestruturação:} Extração elegante de valores de estruturas complexas.
+    \item \textbf{Composição funcional:} Combinação de funções simples para resolver problemas complexos.
+\end{itemize}
+
+O domínio destes conceitos fundamentais é essencial para programação funcional efetiva em Clojure.
+
+\end{document}
